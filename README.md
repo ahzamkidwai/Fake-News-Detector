@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ TruthGuard – AI-Powered Fake News Detector
 
-## Getting Started
+This is a **Next.js 14** project that uses **React** and **TailwindCSS** to build a web application for detecting fake news articles using AI. Users can paste news content and receive an instant credibility analysis with a confidence score.
 
-First, run the development server:
+This project was bootstrapped with `create-next-app`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 📝 Paste news articles to analyze for credibility.  
+- 🤖 Uses Hugging Face AI models for fake news detection.  
+- 📊 Step-by-step animated progress during analysis.  
+- 🌐 Example articles for testing (Political, Health, Tech).  
+- 📈 Shows prediction (Real/Fake) and confidence score.  
+- 🎨 Sleek glassmorphism UI using TailwindCSS.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧠 How It Works
 
-To learn more about Next.js, take a look at the following resources:
+The Fake News Detector uses the `mrm8488/bert-tiny-finetuned-fake-news-detection` model from Hugging Face.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Step-by-step breakdown:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **User Input:**  
+   User pastes a news article in the textarea.
 
-## Deploy on Vercel
+2. **Submit Request:**  
+   On clicking **Analyze Article**, the app sends a POST request to the internal API route (`/api/fakenews`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Backend API Call:**  
+   The API route receives the text and forwards it to the Hugging Face Inference API.  
+   Authorization is handled using your Hugging Face API key stored in `.env.local`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **AI Model Prediction:**  
+   The model returns predictions as labels with confidence scores:
+   - `LABEL_0` → Real  
+   - `LABEL_1` → Fake
+
+5. **Pick Highest Confidence:**  
+   The API selects the label with the highest score and sends back a response including:
+   - `label`: Real or Fake  
+   - `score`: Confidence percentage  
+   - `raw`: Full model output for debugging or advanced usage
+
+6. **Display Results:**  
+   The frontend displays the prediction, confidence score, and raw data in a formatted UI.  
+   A spinning loader with step-by-step messages is shown during analysis.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14  
+- **UI Library:** React 18  
+- **Styling:** TailwindCSS (Glassmorphism UI)  
+- **AI Model:** Hugging Face – Fake News Detection (BERT Tiny)  
+- **Hosting:** Vercel (Recommended)  
+
+---
+
+## 📂 Project Structure
+
