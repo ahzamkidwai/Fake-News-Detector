@@ -1,11 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 
+interface AnalysisResult {
+  label: string;
+  score: number;
+  raw: unknown;
+}
+
 export default function FakeNewsDetector() {
   const [articleContent, setArticleContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(0);
-  const [analysis, setAnalysis] = useState<any>(null);
+  const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
 
   // Example articles
   const examples: Record<string, string> = {
