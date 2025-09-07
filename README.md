@@ -60,5 +60,9 @@ The Fake News Detector uses the `mrm8488/bert-tiny-finetuned-fake-news-detection
 
 ---
 
-## 📂 Project Structure
+## ⚙️ Installation & Setup
 
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/yourusername/fake-news-detector.git
+cd fake-news-detector
