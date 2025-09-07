@@ -171,7 +171,7 @@ export default function FakeNewsDetector() {
                 Analysis Results
               </h2>
               <p className="text-white font-bold mb-2">
-                Prediction:{" "}
+                Prediction:
                 <span
                   className={`${
                     analysis.label.toLowerCase().includes("fake")
