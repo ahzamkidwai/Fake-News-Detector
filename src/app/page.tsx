@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 
 export default function FakeNewsDetector() {
-  const [articleUrl, setArticleUrl] = useState("");
   const [articleContent, setArticleContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(0);
@@ -107,13 +106,6 @@ export default function FakeNewsDetector() {
         {/* Input */}
         <div className="glass-effect rounded-2xl p-8">
           <form onSubmit={handleSubmit}>
-            <input
-              type="url"
-              value={articleUrl}
-              onChange={(e) => setArticleUrl(e.target.value)}
-              className="w-full px-4 py-3 mb-4 bg-gray-900 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-400"
-              placeholder="https://example.com/news-article"
-            />
             <textarea
               rows={12}
               value={articleContent}
