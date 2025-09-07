@@ -45,6 +45,22 @@ export default function FakeNewsDetector() {
       alert("Please paste a news article to analyze.");
       return;
     }
+
+    setLoading(true);
+    try {
+      const response = await fetch("/api/fakenews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: articleContent }),
+      });
+      const data = await response.json();
+      console.log("Analysis Result:", data);
+      setAnalysis(data);
+    } catch (err) {
+      console.error("Error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
